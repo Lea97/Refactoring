@@ -5,6 +5,7 @@ import java.util.*;
 public class Customer {
 	private String name;
 	private Vector<Rental> rentals = new Vector<Rental>();
+	private StringBuilder result = new StringBuilder();
 
 	public Customer(String name) {
 		this.name = name;
@@ -21,14 +22,14 @@ public class Customer {
 	public String statement() {
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
-		
-		String result = "Rental Record for " + this.getName() + "\n";
-		result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
+		result.append("Rental Record for " + this.getName() + "\n");
+		result.append("\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n");
+		
 		for (Enumeration enum_rentals = rentals.elements(); enum_rentals.hasMoreElements();) {
 			Rental rental = (Rental) enum_rentals.nextElement();
 			double thisAmount = 0;
-			
+
 			thisAmount = amountFor(rental);
 			// add frequent renter points
 			frequentRenterPoints++;
@@ -36,22 +37,21 @@ public class Customer {
 			if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1)
 				frequentRenterPoints++;
 			// show figures for this rental
-			result += "\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t"
-					+ String.valueOf(thisAmount) + "\n";
+			result.append("\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t"
+					+ String.valueOf(thisAmount) + "\n");
 			totalAmount += thisAmount;
 		}
-		
+
 		// add footer lines
-		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-		result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
-		return result;
+		result.append("Amount owed is " + String.valueOf(totalAmount) + "\n");
+		result.append("You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points");
+		return result.toString();
 	}
-	
-	
+
 	private double amountFor(Rental rental) {
 		double thisAmount = 0;
 		int dayRented = rental.getDaysRented();
-		
+
 		switch (rental.getMovie().getPriceCode()) {
 		case Movie.REGULAR:
 			thisAmount += 2;
