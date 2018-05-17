@@ -21,7 +21,7 @@ public class RentalTest {
 
 		Rental rentalTest = new Rental(new Movie("title", 1), 10);
 		assertEquals("title", rentalTest.getMovie().getTitle());
-		assertEquals(1, rentalTest.getMovie().getPriceCode());
+		assertEquals(1, rentalTest.getMovie().getPrice().getPriceCode());
 	}
 
 }

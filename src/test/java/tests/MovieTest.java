@@ -11,7 +11,7 @@ public class MovieTest {
 	public void getPriceCode() {
 		int testPriceCode = 2;
 		Movie testMovie = new Movie("Name", testPriceCode);
-		assertEquals(testPriceCode, testMovie.getPriceCode());
+		assertEquals(testPriceCode, testMovie.getPrice().getPriceCode());
 	}
 
 	@Test
@@ -25,10 +25,10 @@ public class MovieTest {
 	public void setPriceCode() {
 		int testPriceCode = 2;
 		Movie testMovie = new Movie("Name", testPriceCode);
-		assertEquals(testPriceCode, testMovie.getPriceCode());
+		assertEquals(testPriceCode, testMovie.getPrice().getPriceCode());
 
 		testMovie.setPriceCode(1);
-		assertEquals(1, testMovie.getPriceCode());
+		assertEquals(1, testMovie.getPrice().getPriceCode());
 	}
 
 }
