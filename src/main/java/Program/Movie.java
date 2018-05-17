@@ -5,19 +5,21 @@ public class Movie {
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
 	private String title;
-	private int priceCode;
+	private Price price;
 
 	public Movie(String title, int priceCode) {
 		this.title = title;
-		this.priceCode = priceCode;
+		PriceFactory priceFactory = new PriceFactory();
+		this.price = priceFactory.getPrice(priceCode);
 	}
 
-	public int getPriceCode() {
-		return priceCode;
+	public Price getPrice() {
+		return price;
 	}
 
-	public void setPriceCode(int PriceCode) {
-		this.priceCode = PriceCode;
+	public void setPriceCode(int priceCode) {
+		PriceFactory priceFactory = new PriceFactory();
+		this.price = priceFactory.getPrice(priceCode);
 	}
 
 	public String getTitle() {
