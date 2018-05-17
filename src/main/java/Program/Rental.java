@@ -1,3 +1,6 @@
+package Program;
+
+
 class Rental {
     private Movie movie;
     private int daysRented;
