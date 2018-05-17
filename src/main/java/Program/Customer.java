@@ -46,7 +46,8 @@ public class Customer {
 		result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
 		return result;
 	}
-
+	
+	
 	private double amountFor(Rental rental) {
 		double thisAmount = 0;
 		switch (rental.getMovie().getPriceCode()) {
